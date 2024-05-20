@@ -1,0 +1,201 @@
+Q1)Prdict the output
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+while ('1' < '2')
+cout << "In while loop" << endl;
+}
+Ans) Infinite "In While loop" will printed
+
+
+Q2)Predict the output
+#include <bits/stdc++.h>
+using namespace std;
+int main( ) {
+int t = 10;
+while (t /= 2) {
+cout << "Hello" << endl;
+}
+}
+Ans)
+Hello
+Hello
+Hello
+
+Q3)Predict the output
+#include <bits/stdc++.h>
+using namespace std;
+int main( ) {
+for (int x = 1; x * x <= 10; x++)
+cout << "In for loop" << endl;
+}
+Ans)
+In for loop
+In for loop
+In for loop
+
+
+Q4)Predict the output
+#include <bits/stdc++.h>
+using namespace std;
+int main( ) {
+int x = 10, y = 0 ;
+while ( x >= y ) {
+x-- ;
+y++ ;
+cout << x << " " << y << endl ;
+}
+}
+Ans) 
+9 1
+8 2
+7 3
+6 4
+5 5
+4 6
+
+
+Q5)WAP to print the sum of all the even digits of a given number.
+Ans)
+// C++ implementation of the approach 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+// Function to return the reverse of a number 
+int reverse(int n) 
+{ 
+	int rev = 0; 
+	while (n != 0) { 
+		rev = (rev * 10) + (n % 10); 
+		n /= 10; 
+	} 
+	return rev; 
+} 
+
+// Function to find the sum of the odd 
+// and even positioned digits in a number 
+void getSum(int n) 
+{ 
+	n = reverse(n); 
+	int sumOdd = 0, sumEven = 0, c = 1; 
+
+	while (n != 0) { 
+
+		// If c is even number then it means 
+		// digit extracted is at even place 
+		if (c % 2 == 0) 
+			sumEven += n % 10; 
+		else
+			sumOdd += n % 10; 
+		n /= 10; 
+		c++; 
+	} 
+
+	cout << "Sum odd = " << sumOdd << "\n"; 
+	cout << "Sum even = " << sumEven; 
+} 
+
+// Driver code 
+int main() 
+{ 
+	int n = 457892; 
+	getSum(n); 
+
+	return 0; 
+} 
+
+
+Q)WAP to print the sum of a given number and its reverse.
+Ans)
+#include<stdio.h>
+
+void main() {
+  
+  int n=0,rev=0,sum=0,temp;
+  
+  printf("Enter the value of n: \n") ;
+  scanf("%d",&n);
+  
+  temp = n ;
+ 
+  while(temp!=0) {
+    
+    rev = rev*10 + (temp%10) ;
+    temp = temp/10;
+    
+  }
+    sum = (rev + n) ;
+    printf("sum = %d",sum);
+    
+    
+  }
+
+
+Q)Print the factorials of first ‘n’ numbers
+Ans.
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    long factorial = 1.0;
+
+    cout << "Enter a positive integer: ";
+    cin >> n;
+
+    if (n < 0)
+        cout << "Error! Factorial of a negative number doesn't exist.";
+    else {
+        for(int i = 1; i <= n; ++i) {
+            factorial *= i;
+        }
+        cout << "Factorial of " << n << " = " << factorial;    
+    }
+
+    return 0;
+}
+
+
+Q)Print first ‘n’ fibonacci numbers.
+Ans
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cout<<"Enter a number";
+    cin>>n;
+    int a=1;
+    int b=1;
+    int sum=0;
+    for(int i=1;i<=n-2;i++){
+        sum=a+b;
+        a=b;
+        b=sum;
+    }
+    cout<<sum;  
+
+Q)Write a program to print out all Armstrong numbers between 1 and 500. If the sum of cubes of
+each digit of the number is equal to the number itself, then the number is called an Armstrong
+number.
+Ans)
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int n,digit1,digit2,digit3;
+
+	for(int i=1;i<=500;i++)
+	{
+		digit1=i/100;
+		digit2=i/10 - digit1*10;
+		digit3=i%10;
+
+		if(digit1*digit1*digit1 + digit2*digit2*digit2 + digit3*digit3*digit3 == i)
+			cout<<i<<endl;
+	}
+
+	
+	return 0;
+}
+
