@@ -1,0 +1,142 @@
+Q1 : Write a function to print squares of first n natural numbers, taking n as argument to the function
+Ans)
+// CPP Program to find sum of square of first n natural numbers 
+#include <iostream> 
+using namespace std; 
+
+// Return the sum of the square 
+// of first n natural numbers 
+int squaresum(int n) 
+{ 
+	// Iterate i from 1 and n 
+	// finding square of i and add to sum. 
+	int sum = 0; 
+	for (int i = 1; i <= n; i++) 
+		sum += (i * i); 
+	return sum; 
+} 
+
+// Driven Program 
+int main() 
+{ 
+	int n = 4; 
+	cout << squaresum(n) << endl; 
+	return 0; 
+} 
+
+
+Q)Write a function that takes the radius of a circle as an argument and returns its area.
+Ans
+/*
+ * C++ Program to Compute the Area of Circle
+ */
+#include <iostream>
+ 
+int main()
+{
+    float radius, area;
+ 
+    std::cout << "Enter the radius of circle : ";
+    std::cin >> radius;
+    area = 3.14 * radius * radius;
+    std::cout << "Area of circle with radius "
+              << radius << " is " << area;
+}
+
+
+Q)Given two numbers a and b, write a function to print all odd numbers between them.
+ans)
+#include <iostream>
+
+// Function to print all odd numbers between a and b
+void printOddNumbers(int a, int b) {
+    // Ensure a is less than b
+    if (a > b) {
+        std::swap(a, b);
+    }
+
+    // Start from the next odd number if a is even
+    if (a % 2 == 0) {
+        a++;
+    }
+
+    // Print all odd numbers from a to b
+    for (int i = a; i <= b; i += 2) {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int a, b;
+    std::cout << "Enter two numbers: ";
+    std::cin >> a >> b;
+    
+    printOddNumbers(a, b);
+
+    return 0;
+}
+
+
+Q)Write a function to count the number of digits in a number and then print the square of this number.
+ans)
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int countDigits(int number) {
+    // Handle negative numbers by taking the absolute value
+    if (number < 0) {
+        number = abs(number);
+    }
+    
+    // Handle the special case where the number is 0
+    if (number == 0) {
+        return 1;
+    }
+
+    int count = 0;
+    while (number != 0) {
+        number /= 10;
+        count++;
+    }
+    return count;
+}
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    
+    int digitCount = countDigits(number);
+    int square = digitCount*digitCount;
+
+    cout << "Number of digits: " << digitCount << endl;
+    cout << "Square of the number: " << square << endl;
+
+    return 0;
+}
+
+
+Q)The minimum number of functions present in any C++ program is:
+0
+1
+2
+Infinite
+Ans) 1
+
+
+Q6: State True and False:
+A function may be called more than once from any other function
+It is necessary for a function to return some value.
+Ans) True
+    False
+
+
+
+Q7: Explore:
+Can the same function name be used for different functions without any conflict?
+ANS) No
+
+
