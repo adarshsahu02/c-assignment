@@ -1,0 +1,145 @@
+Q1)Calculate the product of all the elements in the given array.
+Ans)
+#include <iostream> 
+using namespace std; 
+
+int main() 
+{ 
+
+	int arr[] = { 1, 2, 3, 4, 5 }; 
+	int product = 1; 
+	int i = 0; 
+	int j = sizeof(arr) / sizeof(arr[0]) - 1; 
+	while (i < j) { 
+		product *= arr[i] * arr[j]; 
+		i++; 
+		j--; 
+	} 
+	if (i == j) { 
+		product *= arr[i]; 
+	} 
+
+	cout << product << endl; 
+} 
+
+Q2)
+Find the second largest element in the given Array in one pass.
+// C++ program to find second largest element in an array
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void print2largest(int arr[], int arr_size)
+{
+    sort(arr, arr + arr_size, greater<int>());
+    for (int i = 1; i < arr_size; i++) {
+        if (arr[i] != arr[0]) {
+            printf("The second largest element is %d\n",
+                   arr[i]);
+            return;
+        }
+    }
+    printf("There is no second largest element\n");
+}
+
+
+int main()
+{
+    int arr[] = { 12, 35, 1, 10, 34, 1 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    print2largest(arr, n);
+    return 0;
+}
+
+Q3)
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int a[] = { 1, 423, 6, 46, 34, 23, 13, 53, 4 };
+    int n = sizeof(a) / sizeof(a[0]);
+  
+
+    sort(a, a + n);
+
+  
+    cout << "min-" << a[0] << " max-" << a[n - 1] << endl;
+  
+    return 0;
+}
+
+
+Q4)
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool checkDuplicatesWithinK(int arr[], int n, int k)
+{
+	
+	for (int i = 0; i < n; i++) {
+		int j = i + 1;
+		int range = k;
+		
+		while (range > 0 and j < n) {
+			if (arr[i] == arr[j])
+				return true;
+			j++;
+			range--;
+		}
+	}
+	return false;
+}
+int main()
+{
+	int arr[] = { 10, 5, 3, 4, 3, 5, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	if (checkDuplicatesWithinK(arr, n, 3))
+		cout << "Yes";
+	else
+		cout << "No";
+}
+
+Q5)
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int firstMissingPos(int A[], int n)
+{
+    
+
+    bool present[n + 1] = { false };
+
+
+    for (int i = 0; i < n; i++) {
+
+        if (A[i] > 0 && A[i] <= n)
+            present[A[i]] = true;
+    }
+
+    
+    for (int i = 1; i <= n; i++)
+        if (!present[i])
+            return i;
+
+
+    return n + 1;
+}
+
+int main()
+{
+
+    int arr[] = { 0, 10, 2, -10, -20 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+    cout << firstMissingPos(arr, size);
+}
+
+
+
+Q6)
+49
