@@ -1,0 +1,117 @@
+1)
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int countTriplets(int arr[], int size, int x) {
+    int count = 0;
+    sort(arr, arr + size);
+    for(int i = 0; i < size - 2; i++) {
+        int l = i + 1, r = size - 1;
+        while(l < r) {
+            int sum = arr[i] + arr[l] + arr[r];
+            if(sum == x) {
+                count++;
+                l++;
+                r--;
+            }
+
+
+2)
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void multiply(vector<int> &number, int x) {
+    int carry = 0;
+    for(auto &digit : number) {
+        int product = digit * x + carry;
+        digit = product % 10;
+        carry = product / 10;
+    }
+    while(carry) {
+        number.push_back(carry % 10);
+        carry /= 10;
+    }
+}
+
+void factorial(int n) {
+    vector<int> result(1, 1);
+    for(int i = 2; i <= n; i++) {
+        multiply(result, i);
+    }
+    cout << "Factorial of " << n << " is: ";
+    for(auto it = result.rbegin(); it != result.rend(); ++it) {
+        cout << *it;
+    }
+    cout << endl;
+}
+
+int main() {
+    int n = 100;
+    factorial(n);
+    return 0;
+}
+
+
+3)
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int firstNonRepeating(int arr[], int size) {
+    unordered_map<int, int> frequency;
+    for(int i = 0; i < size; i++) {
+        frequency[arr[i]]++;
+    }
+    for(int i = 0; i < size; i++) {
+        if(frequency[arr[i]] == 1) {
+            return arr[i];
+        }
+    }
+    return -1; // Return -1 if no non-repeating element is found
+}
+
+int main() {
+    int arr[] = {9, 4, 9, 6, 7, 4};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    int result = firstNonRepeating(arr, size);
+    if(result != -1) {
+        cout << "First non-repeating element is " << result << endl;
+    } else {
+        cout << "No non-repeating element found" << endl;
+    }
+    return 0;
+}
+
+
+4)
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+bool isSubset(int arr1[], int size1, int arr2[], int size2) {
+    unordered_set<int> elements(arr1, arr1 + size1);
+    for(int i = 0; i < size2; i++) {
+        if(elements.find(arr2[i]) == elements.end()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int arr1[] = {11, 1, 13, 21, 3, 7};
+    int size1 = sizeof(arr1)/sizeof(arr1[0]);
+    int arr2[] = {11, 3, 7, 1};
+    int size2 = sizeof(arr2)/sizeof(arr2[0]);
+    if(isSubset(arr1, size1, arr2, size2)) {
+        cout << "Array 2 is a subset of Array 1" << endl;
+    } else {
+        cout << "Array 2 is not a subset of Array 1" << endl;
+    }
+    return 0;
+}
+
+
