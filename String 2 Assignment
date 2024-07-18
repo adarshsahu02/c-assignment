@@ -1,0 +1,131 @@
+1.
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+std::string concatenateWithReverse(const std::string& str) {
+    std::string rev = str;
+    std::reverse(rev.begin(), rev.end());
+    return str + rev;
+}
+
+int main() {
+    std::string str1 = "PWSkills";
+    std::string str2 = "pw";
+    std::cout << "Output: " << concatenateWithReverse(str1) << std::endl; // PWSkillssllikSWP
+    std::cout << "Output: " << concatenateWithReverse(str2) << std::endl; // pwwp
+    return 0;
+}
+
+
+
+2.
+#include <iostream>
+#include <string>
+#include <set>
+
+int secondLargestDigit(const std::string& str) {
+    std::set<int> digits;
+    for (char ch : str) {
+        if (isdigit(ch)) {
+            digits.insert(ch - '0');
+        }
+    }
+    if (digits.size() < 2) {
+        return -1; // Assuming -1 as an error value when there is no second largest digit
+    }
+    auto it = digits.rbegin();
+    ++it; // Move to the second largest
+    return *it;
+}
+
+int main() {
+    std::string str1 = "2947578";
+    std::string str2 = "1241";
+    std::cout << "Output: " << secondLargestDigit(str1) << std::endl; // 8
+    std::cout << "Output: " << secondLargestDigit(str2) << std::endl; // 2
+    return 0;
+}
+
+3.
+#include <iostream>
+#include <string>
+#include <set>
+
+bool isVowel(char ch) {
+    char lower = tolower(ch);
+    return lower == 'a' || lower == 'e' || lower == 'i' || lower == 'o' || lower == 'u';
+}
+
+int countVowelSubstrings(const std::string& str) {
+    int count = 0;
+    for (size_t i = 0; i < str.size(); ++i) {
+        if (isVowel(str[i])) {
+            ++count; // Single vowel is a valid substring
+            for (size_t j = i + 1; j < str.size() && isVowel(str[j]); ++j) {
+                ++count; // Counting substrings ending at position j
+            }
+        }
+    }
+    return count;
+}
+
+int main() {
+    std::string str1 = "abjkoe";
+    std::string str2 = "hgdhpw";
+    std::cout << "Output: " << countVowelSubstrings(str1) << std::endl; // 4
+    std::cout << "Output: " << countVowelSubstrings(str2) << std::endl; // 0
+    return 0;
+}
+
+4.
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+bool areAnagrams(const std::string& s1, const std::string& s2) {
+    if (s1.size() != s2.size()) {
+        return false;
+    }
+    std::string sorted_s1 = s1;
+    std::string sorted_s2 = s2;
+    std::sort(sorted_s1.begin(), sorted_s1.end());
+    std::sort(sorted_s2.begin(), sorted_s2.end());
+    return sorted_s1 == sorted_s2;
+}
+
+int main() {
+    std::string s1 = "car";
+    std::string s2 = "arc";
+    std::cout << "Output: " << (areAnagrams(s1, s2) ? "True" : "False") << std::endl; // True
+
+    s1 = "book";
+    s2 = "hook";
+    std::cout << "Output: " << (areAnagrams(s1, s2) ? "True" : "False") << std::endl; // False
+    return 0;
+}
+
+
+
+5.
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+
+std::string lexicographicallyMaxWord(const std::string& sentence) {
+    std::istringstream iss(sentence);
+    std::string word, maxWord;
+    while (iss >> word) {
+        if (word > maxWord) {
+            maxWord = word;
+        }
+    }
+    return maxWord;
+}
+
+int main() {
+    std::string str1 = "proud to be pwians";
+    std::string str2 = "decode dsa with pw";
+    std::cout << "Output: " << lexicographicallyMaxWord(str1) << std::endl; // pwians
+    std::
