@@ -1,0 +1,215 @@
+1.
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int findLastOccurrence(const vector<int>& arr, int x) {
+    int low = 0;
+    int high = arr.size() - 1;
+    int result = -1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (arr[mid] == x) {
+            result = mid; // update result, but continue searching for last occurrence
+            low = mid + 1; // search in the right half
+        } else if (arr[mid] < x) {
+            low = mid + 1; // search in the right half
+        } else {
+            high = mid - 1; // search in the left half
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 3, 4, 4, 4, 5};
+    int x = 4;
+    int lastIndex = findLastOccurrence(arr, x);
+    cout << "Last occurrence of " << x << " is at index: " << lastIndex << endl;
+    
+    return 0;
+}
+
+
+
+2.
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int countOnes(const vector<int>& a) {
+    int count = 0;
+    int low = 0;
+    int high = a.size() - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (a[mid] == 1) {
+            count = mid + 1; // count all elements from start to mid
+            low = mid + 1; // search in the right half
+        } else {
+            high = mid - 1; // search in the left half
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    vector<int> a = {0, 0, 0, 0, 1, 1};
+    int totalOnes = countOnes(a);
+    cout << "Total number of 1's: " << totalOnes << endl;
+
+    return 0;
+}
+
+
+
+3.
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int findMaxOnesRow(const vector<vector<int>>& matrix) {
+    int maxOnesRow = 0;
+    int maxOnes = 0;
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+
+    int r = 0;
+    int c = cols - 1;
+
+    while (r < rows && c >= 0) {
+        if (matrix[r][c] == 1) {
+            maxOnes = cols - c; // count of 1's in the current row
+            maxOnesRow = r;
+            c--; // move left in the current row
+        } else {
+            r++; // move down to the next row
+        }
+    }
+
+    return maxOnesRow;
+}
+
+int main() {
+    vector<vector<int>> matrix = {
+        {0, 1, 1, 1},
+        {0, 0, 1, 1},
+        {1, 1, 1, 1},
+        {0, 0, 0, 0}
+    };
+
+    int maxOnesRowIndex = findMaxOnesRow(matrix);
+    cout << "Row with maximum 1's is: " << maxOnesRowIndex << endl;
+
+    return 0;
+}
+
+
+
+
+4.
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int findDuplicate(const vector<int>& nums) {
+    int low = 1;
+    int high = nums.size() - 1;
+
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        int count = 0;
+        for (int num : nums) {
+            if (num <= mid) {
+                count++;
+            }
+        }
+        if (count > mid) {
+            high = mid; // duplicate is in the left half
+        } else {
+            low = mid + 1; // duplicate is in the right half
+        }
+    }
+
+    return low; // low or high, both will point to the duplicate number
+}
+
+int main() {
+    vector<int> nums1 = {1, 2, 3, 3, 4};
+    vector<int> nums2 = {1, 2, 2, 3, 4, 5};
+
+    int duplicate1 = findDuplicate(nums1);
+    int duplicate2 = findDuplicate(nums2);
+
+    cout << "Duplicate in nums1: " << duplicate1 << endl;
+    cout << "Duplicate in nums2: " << duplicate2 << endl;
+
+    return 0;
+}
+
+
+5.
+#include <iostream>
+
+using namespace std;
+
+bool isPerfectSquare(int n) {
+    if (n < 1) return false;
+    long left = 1, right = n;
+    while (left <= right) {
+        long mid = left + (right - left) / 2;
+        long square = mid * mid;
+        if (square == n) return true;
+        else if (square < n) left = mid + 1;
+        else right = mid - 1;
+    }
+    return false;
+}
+
+int main() {
+    int n1 = 36;
+    int n2 = 45;
+
+    cout << "Is " << n1 << " a perfect square? " << (isPerfectSquare(n1) ? "Yes" : "No") << endl;
+    cout << "Is " << n2 << " a perfect square? " << (isPerfectSquare(n2) ? "Yes" : "No") << endl;
+
+    return 0;
+}
+
+
+
+6.
+
+#include <iostream>
+
+using namespace std;
+
+int arrangeCoins(int n) {
+    long left = 0, right = n;
+    while (left <= right) {
+        long mid = left + (right - left) / 2;
+        long total = mid * (mid + 1) / 2;
+        if (total == n) return mid;
+        else if (total < n) left = mid + 1;
+        else right = mid - 1;
+    }
+    return right; // right will be the maximum number of complete rows
+}
+
+int main() {
+    int n1 = 5;
+    int n2 = 8;
+
+    cout << "Number of complete rows for " << n1 << " coins: " << arrangeCoins(n1) << endl;
+    cout << "Number of complete rows for " << n2 << " coins: " << arrangeCoins(n2) << endl;
+
+    return 0;
+}
