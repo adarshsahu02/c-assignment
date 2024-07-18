@@ -1,0 +1,115 @@
+1.
+#include <iostream>
+#include <string>
+
+std::string updateOddPositions(const std::string& str) {
+    std::string result = str;
+    for (int i = 1; i < result.size(); i += 2) {
+        result[i] = '#';
+    }
+    return result;
+}
+
+int main() {
+    std::string str1 = "Pbwcshkuiglhlds";
+    std::string str2 = "a";
+    std::cout << "Output: " << updateOddPositions(str1) << std::endl; // P#w#s#k#i#l#l#s
+    std::cout << "Output: " << updateOddPositions(str2) << std::endl; // a
+    return 0;
+}
+
+
+2.
+#include <iostream>
+#include <string>
+
+bool isConsonant(char ch) {
+    ch = tolower(ch);
+    return (ch >= 'a' && ch <= 'z') && !(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
+}
+
+int countConsonants(const std::string& str) {
+    int count = 0;
+    for (char ch : str) {
+        if (isConsonant(ch)) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int main() {
+    std::string str1 = "pwians";
+    std::string str2 = "abdc";
+    std::cout << "Output: " << countConsonants(str1) << std::endl; // 4
+    std::cout << "Output: " << countConsonants(str2) << std::endl; // 3
+    return 0;
+}
+
+
+
+3.
+#include <iostream>
+#include <string>
+
+bool isPalindrome(const std::string& str) {
+    int n = str.size();
+    for (int i = 0; i < n / 2; ++i) {
+        if (str[i] != str[n - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    std::string str1 = "abcde";
+    std::string str2 = "abcdcba";
+    std::cout << "Output: " << (isPalindrome(str1) ? "Yes" : "No") << std::endl; // No
+    std::cout << "Output: " << (isPalindrome(str2) ? "Yes" : "No") << std::endl; // Yes
+    return 0;
+}
+
+
+
+4.
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+std::string reverseSecondHalf(std::string str) {
+    int n = str.size();
+    if (n % 2 == 0) {
+        std::reverse(str.begin() + n / 2, str.end());
+    }
+    return str;
+}
+
+int main() {
+    std::string str1 = "abcdefgh";
+    std::string str2 = "pwians";
+    std::cout << "Output: " << reverseSecondHalf(str1) << std::endl; // abcdhgfe
+    std::cout << "Output: " << reverseSecondHalf(str2) << std::endl; // pwisna
+    return 0;
+}
+
+
+5.
+#include <iostream>
+#include <string>
+
+int stringToInt(const std::string& str) {
+    int num = 0;
+    for (char ch : str) {
+        num = num * 10 + (ch - '0');
+    }
+    return num;
+}
+
+int main() {
+    std::string str1 = "3244";
+    std::string str2 = "12";
+    std::cout << "Output: " << stringToInt(str1) << std::endl; // 3244
+    std::cout << "Output: " << stringToInt(str2) << std::endl; // 12
+    return 0;
+}
