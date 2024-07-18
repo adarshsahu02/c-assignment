@@ -1,0 +1,230 @@
+1.
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+    const int rows = 5;
+    const int cols = 5;
+
+    
+    int matrix[rows][cols];
+
+    
+    for(int i = 0; i < rows; ++i) {
+        for(int j = 0; j < cols; ++j) {
+            matrix[i][j] = 10;
+        }
+    }
+
+   
+    for(int i = 0; i < rows; ++i) {
+        for(int j = 0; j < cols; ++j) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+2.
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Define the dimensions of the matrix
+    const int rows = 3;
+    const int cols = 3;
+
+    // Define the two matrices and the result matrix
+    int matrix1[rows][cols] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int matrix2[rows][cols] = {
+        {4, 5, 8},
+        {0, 0, 8},
+        {1, 2, 0}
+    };
+
+    // Add the two matrices and store the result in matrix1
+    for(int i = 0; i < rows; ++i) {
+        for(int j = 0; j < cols; ++j) {
+            matrix1[i][j] += matrix2[i][j];
+        }
+    }
+
+    // Output the result matrix
+    cout << "Resultant matrix after addition:" << endl;
+    for(int i = 0; i < rows; ++i) {
+        for(int j = 0; j < cols; ++j) {
+            cout << matrix1[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+3.
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Function to calculate the sum of the submatrix
+int submatrixSum(vector<vector<int>>& matrix, int l1, int r1, int l2, int r2) {
+    int sum = 0;
+    for (int i = l1; i <= l2; ++i) {
+        for (int j = r1; j <= r2; ++j) {
+            sum += matrix[i][j];
+        }
+    }
+    return sum;
+}
+
+int main() {
+    // Define the matrix dimensions
+    const int n = 4;
+    const int m = 4;
+
+    // Initialize the matrix
+    vector<vector<int>> matrix = {
+        {1, 2, -3, 4},
+        {0, 0, -4, 2},
+        {1, -1, 2, 3},
+        {-4, -5, -7, 0}
+    };
+
+    // Define the coordinates
+    int l1 = 1, r1 = 2, l2 = 3, r2 = 3;
+
+    // Calculate and print the sum of the submatrix
+    int result = submatrixSum(matrix, l1, r1, l2, r2);
+    cout << "The sum of the submatrix is: " << result << endl;
+
+    return 0;
+}
+
+
+4.
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to find the largest element in a 2D array
+int findLargestElement(vector<vector<int>>& matrix) {
+    int largest = matrix[0][0];  // Initialize the largest element with the first element
+
+    for (int i = 0; i < matrix.size(); ++i) {
+        for (int j = 0; j < matrix[i].size(); ++j) {
+            if (matrix[i][j] > largest) {
+                largest = matrix[i][j];
+            }
+        }
+    }
+
+    return largest;
+}
+
+int main() {
+    // Define the matrix dimensions and initialize the matrix
+    vector<vector<int>> matrix = {
+        {1, 3, 4, 6},
+        {2, 4, 5, 7},
+        {3, 5, 6, 8},
+        {4, 6, 7, 9}
+    };
+
+    // Find and print the largest element in the matrix
+    int largest = findLargestElement(matrix);
+    cout << "The largest element in the matrix is: " << largest << endl;
+
+    return 0;
+}
+
+
+5.
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to find the row number with the maximum sum
+int findRowWithMaxSum(const vector<vector<int>>& matrix) {
+    int maxSum = INT_MIN;
+    int rowIndex = -1;
+
+    for (int i = 0; i < matrix.size(); ++i) {
+        int currentSum = 0;
+        for (int j = 0; j < matrix[i].size(); ++j) {
+            currentSum += matrix[i][j];
+        }
+        if (currentSum > maxSum) {
+            maxSum = currentSum;
+            rowIndex = i;
+        }
+    }
+
+    return rowIndex;
+}
+
+int main() {
+    // Define the matrix dimensions and initialize the matrix
+    vector<vector<int>> matrix = {
+        {1, 3, 5, 7},
+        {3, 4, 7, 8},
+        {1, 4, 12, 3}
+    };
+
+    // Find the row with the maximum sum
+    int rowIndex = findRowWithMaxSum(matrix);
+
+    // Print the row number (0-based index)
+    cout << "The row with the maximum sum is: " << rowIndex << endl;
+
+    return 0;
+}
+
+
+6.
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to display the middle row and middle column of a square matrix with odd dimensions
+void displayMiddleRowAndColumn(const vector<vector<int>>& matrix, int size) {
+    int mid = size / 2;
+
+    
+    cout << "Middle row elements: ";
+    for (int j = 0; j < size; ++j) {
+        cout << matrix[mid][j] << " ";
+    }
+    cout << endl;
+    cout << "Middle column elements: ";
+    for (int i = 0; i < size; ++i) {
+        cout << matrix[i][mid] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    
+    vector<vector<int>> matrix = {
+        {1, 2, 3, 4, 5},
+        {3, 4, 5, 6, 7},
+        {7, 6, 5, 4, 3},
+        {8, 7, 6, 5, 4},
+        {1, 2, 37, 8, 0}
+    };
+     int size = matrix.size();
+     displayMiddleRowAndColumn(matrix, size);
+
+    return 0;
+}
+
